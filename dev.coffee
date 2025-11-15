@@ -49,3 +49,29 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use(express.json());
 
 -in the client(npm i better-auth)
+
+
+--Implement deviceFlow
+--it is used for the application with no browser
+-Implement it with deviceflow plugin using better auth
+-Create device and approve page in client 
+-write logic to save access token
+
+npm i commander chalk boxen yocto-spinner @clack/prompts figlet
+
+(chalk for adding multiple colors, yocto-spinner for adding box diagrams , figlet to add banners)
+
+
+in git bash----
+cd server
+chmod +x src/cli/main.js
+npm link
+
+in package.json below main
+add(
+    "bin"{
+        "clair":"./src/cli/main.js"
+    }
+)
+{this line is important in main.js from where the command is being created}
+#!/usr/bin/env node  
