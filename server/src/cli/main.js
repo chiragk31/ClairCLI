@@ -5,14 +5,14 @@ import chalk from "chalk";
 import figlet from "figlet";
 
 import { Command } from "commander";
-import { login } from "./commands/auth/login.js";
+import { login, whoami ,logout} from "./commands/auth/login.js";
 
 dotenv.config();
 
 async function main() {
     //Display banner
     console.log(
-        chalk.red(
+        chalk.redBright(
             figlet.textSync("Clair CLI", {
                 font: "Standard",
                 horizontalLayout:"default"
@@ -23,8 +23,13 @@ async function main() {
 
     const program = new Command("clair")
     program.version("1.1.1")
-        .description("Clair a cli based AI tool developed by chiragk31")
+          .description(
+    chalk.gray("Clair — a CLI based AI tool developed by ") +
+    chalk.hex("#A020F0").bold("chiragk31")
+  )
         .addCommand(login)
+        .addCommand(logout)
+        .addCommand(whoami)
     
     
     //Default action show help
