@@ -94,6 +94,11 @@ follow the doc of ai sdk google generative
 
 
 #6 Define Chat feature
+--Add chat features
+npm i marked marked-terminal
+-Add conversation model
+-Implement wakeup command
+-Call SendMessage Method
 
 #7 Tool calling implementation may be add pyhon compiler and any other tool 
 
