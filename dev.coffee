@@ -102,4 +102,10 @@ npm i marked marked-terminal
 
 #7 Tool calling implementation may be add pyhon compiler and any other tool 
 
+-LLM models like chatgpt,grok,claude only have brain no hands they cannot do things on their own if we instruct them .
+-AI agent can do both think and act they have aceess to browser, code execution, calculator etc.
+-If we give instruction to ai agents it uses the the tool to go, find and compute.
+ 
+
 #8 Agentic Ai mode implementaion
+--Code read, and write need the research work
