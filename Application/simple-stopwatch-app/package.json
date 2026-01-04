@@ -1,0 +1,22 @@
+{
+  "name": "simple-stopwatch-app",
+  "version": "1.0.0",
+  "description": "A clean and functional stopwatch application built with HTML, CSS, and vanilla JavaScript.",
+  "main": "script.js",
+  "scripts": {
+    "start": "http-server .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stopwatch",
+    "javascript",
+    "html",
+    "css",
+    "vanilla-js"
+  ],
+  "author": "AI Assistant",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

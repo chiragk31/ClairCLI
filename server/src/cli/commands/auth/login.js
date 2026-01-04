@@ -9,7 +9,7 @@ import open from "open"
 import os from "os";
 import path from "path";
 import yoctoSpinner from "yocto-spinner";
-import * as z from "zod/v4";
+import * as z from "zod";
 import dotenv from "dotenv";
 import prisma from "../../../lib/db.js";
 import { clearStoredToken, getStoredToken, isTokenExpired, storeToken,requireAuth } from "../../../lib/token.js";

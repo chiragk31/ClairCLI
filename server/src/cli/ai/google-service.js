@@ -1,8 +1,8 @@
 import {google} from "@ai-sdk/google"
-import { convertToModelMessages, streamText, tool } from "ai"
+import { convertToModelMessages, generateObject, streamText, tool } from "ai"
 import {config} from "../../config/google.config.js"
 import chalk from "chalk"
-import { startsWith } from "zod/v4";
+import { startsWith } from "zod";
 
 export class AIService{
     constructor() {
@@ -21,8 +21,8 @@ export class AIService{
                  messages: messages,
             }
 
-            if (tools && object.keys(tools).length > 0) {
-                streamConfig.tools == tools;
+            if (tools && Object.keys(tools).length > 0) {
+                streamConfig.tools = tools;
                 streamConfig.maxSteps = 5;//allow upto 5 tool call steps
                 console.log(chalk.grey(`[DEBUG] Tools enabled: ${Object.keys(tools).join(", ")}`))
 
@@ -83,5 +83,28 @@ export class AIService{
 
         },tools)
        return result.content;
+    }
+    
+    /**
+     * Generate structured output using a zod schema
+     * @param {Object} schema -zod schema
+     * @param {string} prompt -prompt for generation
+     * @returns {Promise<Object>} -parsed object matching the schema
+    */
+
+    async generateStructured(schema, prompt) {
+        try {
+            const result = await generateObject({
+                model: this.model,
+                schema: schema,
+                prompt:prompt
+            })
+
+            return result.object
+        } catch (error) {
+            console.error(chalk.red("AI structured generation error:"), error.message);
+            throw error;
+            
+        }
     }
 }
