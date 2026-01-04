@@ -1,0 +1,226 @@
+/* Basic Reset & Box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    color: #333;
+    overflow: hidden; /* Prevent scroll on very small screens if content is large */
+}
+
+/* Stopwatch Container */
+.stopwatch-container {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    margin: 20px;
+    border: 1px solid #eee;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #007bff;
+    letter-spacing: 1px;
+}
+
+/* Display */
+.display {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 3.8em;
+    font-weight: bold;
+    margin-bottom: 35px;
+    color: #2c3e50;
+    background-color: #e9ecef;
+    padding: 20px 15px;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+    min-height: 90px; /* Ensure consistent height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.button {
+    padding: 14px 28px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 110px; /* Ensure consistent button width */
+}
+
+/* Button Colors */
+.button.start {
+    background-color: #28a745; /* Green */
+    color: #fff;
+}
+.button.start:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button.stop {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+}
+.button.stop:hover:not(:disabled) {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button.reset {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+}
+.button.reset:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.button.lap {
+    background-color: #ffc107; /* Yellow */
+    color: #333;
+}
+.button.lap:hover:not(:disabled) {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Disabled Button State */
+.button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Laps Container */
+.laps-container {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.laps-container h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.laps-list {
+    list-style: none;
+    max-height: 200px; /* Scrollable list for many laps */
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.laps-list li {
+    padding: 10px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1em;
+    color: #555;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.laps-list li:last-child {
+    border-bottom: none;
+}
+
+.laps-list li span {
+    font-weight: 500;
+}
+
+/* Scrollbar Styling for Webkit browsers */
+.laps-list::-webkit-scrollbar {
+    width: 8px;
+}
+.laps-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.laps-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.laps-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .stopwatch-container {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .display {
+        font-size: 2.8em;
+        padding: 15px 10px;
+        margin-bottom: 25px;
+    }
+
+    .controls {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%; /* Full width for buttons on small screens */
+        padding: 12px 20px;
+    }
+
+    .laps-container h2 {
+        font-size: 1.5em;
+    }
+
+    .laps-list li {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
+}
